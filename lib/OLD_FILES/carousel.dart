@@ -37,7 +37,7 @@ class _carouselState extends State<carousel> {
     'Oscar',
     'POLOZKA C 1',
     'Oscar',
-    'POLOZKA C 1',
+    'POLOZKA C 5',
     'Oscar',
   ];
 
