@@ -1,4 +1,4 @@
-# flutter_application_1
+# Toto je moja prvá aplikácia
 
 A new Flutter project.
 
