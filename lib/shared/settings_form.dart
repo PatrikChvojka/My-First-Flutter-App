@@ -66,7 +66,7 @@ class _SettingsFormState extends State<SettingsForm> {
                       );
                     }).toList(),
                   ),
-                  SizedBox(height: 30.0),
+                  SizedBox(height: 20.0),
 
                   // slider
                   Slider(
