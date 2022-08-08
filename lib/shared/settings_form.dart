@@ -49,7 +49,7 @@ class _SettingsFormState extends State<SettingsForm> {
                       _currentName = value;
                     }),
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 20.0),
 
                   // dropdown
                   DropdownButtonFormField(
