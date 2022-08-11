@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:flutter_application_1/services/auth.dart';
 import 'package:flutter_application_1/shared/style.dart';
 import 'package:flutter_application_1/shared/loading.dart';
 
-class Register extends StatefulWidget {
+class SignIn extends StatefulWidget {
   final Function toggleView;
-  Register({required this.toggleView});
+  SignIn({required this.toggleView});
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _RegisterState extends State<Register> {
+class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
@@ -30,14 +30,14 @@ class _RegisterState extends State<Register> {
             appBar: AppBar(
               backgroundColor: Colors.brown[400],
               elevation: 0.0,
-              title: const Text('Register'),
+              title: const Text('Sign in'),
               actions: <Widget>[
                 ElevatedButton.icon(
                   onPressed: () {
                     widget.toggleView();
                   },
                   icon: Icon(Icons.person),
-                  label: Text('Sign in'),
+                  label: Text('Register'),
                 ),
               ],
             ),
@@ -75,15 +75,15 @@ class _RegisterState extends State<Register> {
                     ),
                     SizedBox(height: 20.0),
                     ElevatedButton(
-                      child: Text("Register"),
+                      child: Text("Sign in"),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           setState(() => loading = true);
                           dynamic result = await _auth
-                              .registerWithEmailAndPassword(email, password);
+                              .signInWithEmailAndPassword(email, password);
                           if (result == null) {
                             setState(() {
-                              error = 'Please supply a valid email.';
+                              error = 'COULD NOT SIGN IN';
                               loading = false;
                             });
                           }
@@ -105,3 +105,4 @@ class _RegisterState extends State<Register> {
           );
   }
 }
+*/

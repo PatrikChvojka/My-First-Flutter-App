@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:flutter_application_1/services/auth.dart';
 import 'package:flutter_application_1/shared/style.dart';
 import 'package:flutter_application_1/shared/loading.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggleView;
-  SignIn({required this.toggleView});
+  Register({required this.toggleView});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
@@ -30,14 +30,14 @@ class _SignInState extends State<SignIn> {
             appBar: AppBar(
               backgroundColor: Colors.brown[400],
               elevation: 0.0,
-              title: const Text('Sign in'),
+              title: const Text('Register'),
               actions: <Widget>[
                 ElevatedButton.icon(
                   onPressed: () {
                     widget.toggleView();
                   },
                   icon: Icon(Icons.person),
-                  label: Text('Register'),
+                  label: Text('Sign in'),
                 ),
               ],
             ),
@@ -75,15 +75,15 @@ class _SignInState extends State<SignIn> {
                     ),
                     SizedBox(height: 20.0),
                     ElevatedButton(
-                      child: Text("Sign in"),
+                      child: Text("Register"),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           setState(() => loading = true);
                           dynamic result = await _auth
-                              .signInWithEmailAndPassword(email, password);
+                              .registerWithEmailAndPassword(email, password);
                           if (result == null) {
                             setState(() {
-                              error = 'COULD NOT SIGN IN';
+                              error = 'Please supply a valid email.';
                               loading = false;
                             });
                           }
@@ -105,3 +105,4 @@ class _SignInState extends State<SignIn> {
           );
   }
 }
+*/

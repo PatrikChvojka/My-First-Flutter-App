@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import '../flutter_vertical_slider.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -255,3 +255,4 @@ class _LightingState extends State<Lighting> {
     );
   }
 }
+*/

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'sign_in.dart';
 import 'package:flutter_application_1/services/register.dart';
@@ -38,3 +38,4 @@ class _AuthenticateState extends State<Authenticate> {
     }
   }
 }
+*/
