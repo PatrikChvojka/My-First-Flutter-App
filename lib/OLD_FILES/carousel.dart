@@ -48,7 +48,6 @@ class _carouselState extends State<carousel> {
 
   final _formKey = GlobalKey<FormState>();
   CarouselController buttonCarouselController = CarouselController();
-  final myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'presentation/pages/google_map_screen.dart';
-
-//import 'business_logic/blocs/counter_bloc.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -60,19 +58,97 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  CarouselController buttonCarouselController = CarouselController();
+
+  final List data = [
+    {"title": "Image 1", "url": "lib/assets/food03.jpg"},
+    {"title": "Image 2", "url": "lib/assets/food01.jpg"},
+    {"title": "Image 3", "url": "lib/assets/food02.jpg"},
+    {"title": "Image 4", "url": "lib/assets/food03.jpg"},
+    {"title": "Image 5", "url": "lib/assets/food01.jpg"},
+    {"title": "Image 6", "url": "lib/assets/food02.jpg"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Container(
+        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+        constraints: const BoxConstraints.expand(),
+        // body background
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("lib/assets/bg2.jpg"),
+            fit: BoxFit.fitWidth,
+            alignment: Alignment.bottomCenter,
+          ),
+        ),
+
+        // slider
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Google Map Demo',
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 10.0,
             ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: const Text(
+                'Popular right now',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.0,
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      height: 200.0,
+                      enableInfiniteScroll: false,
+                      padEnds: false,
+                      reverse: false,
+                      initialPage: 0,
+                      viewportFraction: 0.40,
+                      // autoPlay: true,
+                      disableCenter: false,
+                    ),
+                    items: data.map((item) {
+                      return Card(
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: Theme.of(context).colorScheme.outline,
+                          ),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(12)),
+                        ),
+                        child: SizedBox(
+                          child: Center(
+                              child: Column(
+                            children: [
+                              Image.asset(item["url"], fit: BoxFit.cover),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              Text(item["title"]),
+                            ],
+                          )),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
