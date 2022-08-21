@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Moja prvá aplikácia',
       theme: ThemeData(
+        fontFamily: 'Montserrat',
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Moja prvá aplikácia'),
@@ -32,14 +33,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   onTapFunction(i) {
     if (i == 0) {
       Navigator.push(
@@ -61,12 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
   CarouselController buttonCarouselController = CarouselController();
 
   final List data = [
-    {"title": "Image 1", "url": "lib/assets/food03.jpg"},
-    {"title": "Image 2", "url": "lib/assets/food01.jpg"},
-    {"title": "Image 3", "url": "lib/assets/food02.jpg"},
-    {"title": "Image 4", "url": "lib/assets/food03.jpg"},
-    {"title": "Image 5", "url": "lib/assets/food01.jpg"},
-    {"title": "Image 6", "url": "lib/assets/food02.jpg"},
+    {"title": "All", "url": "lib/assets/food03.jpg"},
+    {"title": "Sushi", "url": "lib/assets/food01.jpg"},
+    {"title": "Fast Food", "url": "lib/assets/food02.jpg"},
+    {"title": "All", "url": "lib/assets/food03.jpg"},
+    {"title": "Sushi", "url": "lib/assets/food01.jpg"},
+    {"title": "Fast Food", "url": "lib/assets/food02.jpg"},
   ];
 
   @override
@@ -100,9 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Popular right now',
                 style: TextStyle(
                   color: Colors.black,
-                  fontWeight: FontWeight.bold,
                   letterSpacing: 1.0,
-                  fontSize: 18.0,
+                  fontSize: 20.0,
                 ),
               ),
             ),
@@ -113,13 +105,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   CarouselSlider(
                     options: CarouselOptions(
-                      height: 200.0,
+                      height: 150.0,
                       enableInfiniteScroll: false,
                       padEnds: false,
                       reverse: false,
                       initialPage: 0,
                       viewportFraction: 0.40,
-                      // autoPlay: true,
                       disableCenter: false,
                     ),
                     items: data.map((item) {
@@ -131,13 +122,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(12)),
                         ),
+                        clipBehavior: Clip.antiAlias,
                         child: SizedBox(
                           child: Center(
                               child: Column(
                             children: [
                               Image.asset(item["url"], fit: BoxFit.cover),
                               const SizedBox(
-                                height: 10.0,
+                                height: 20.0,
                               ),
                               Text(item["title"]),
                             ],

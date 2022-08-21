@@ -83,6 +83,18 @@ flutter:
   assets:
    - lib/assets/
 
+  fonts:
+   - family: Montserrat
+     fonts:
+      - asset: lib/assets/fonts/Montserrat/Montserrat-Light.ttf
+        weight: 300
+      - asset: lib/assets/fonts/Montserrat/Montserrat-Regular.ttf
+        weight: 400
+      - asset: lib/assets/fonts/Montserrat/Montserrat-Bold.ttf
+        weight: 600
+      - asset: lib/assets/fonts/Montserrat/Montserrat-ExtraBold.ttf
+        weight: 800
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
