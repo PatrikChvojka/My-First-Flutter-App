@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:flutter_application_1/presentation/widgets/hotel_carousel.dart';
+import 'presentation/widgets/destination_carousel.dart';
+
 import 'presentation/pages/google_map_screen.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'presentation/pages/qr_code.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,7 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context) => MyApp(),
           ));
     }
-
     if (i == 1) {
       Navigator.push(
           context,
@@ -49,99 +51,142 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context) => GoogleMapScreen(),
           ));
     }
+    if (i == 3) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Qrcode(),
+          ));
+    }
   }
-
-  CarouselController buttonCarouselController = CarouselController();
-
-  final List data = [
-    {"title": "All", "url": "lib/assets/food03.jpg"},
-    {"title": "Sushi", "url": "lib/assets/food01.jpg"},
-    {"title": "Fast Food", "url": "lib/assets/food02.jpg"},
-    {"title": "All", "url": "lib/assets/food03.jpg"},
-    {"title": "Sushi", "url": "lib/assets/food01.jpg"},
-    {"title": "Fast Food", "url": "lib/assets/food02.jpg"},
-  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        elevation: 0.0,
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
         constraints: const BoxConstraints.expand(),
-        // body background
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("lib/assets/bg2.jpg"),
-            fit: BoxFit.fitWidth,
-            alignment: Alignment.bottomCenter,
-          ),
-        ),
-
         // slider
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 10.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: const Text(
-                'Popular right now',
-                style: TextStyle(
-                  color: Colors.black,
-                  letterSpacing: 1.0,
-                  fontSize: 20.0,
-                ),
-              ),
-            ),
-            SingleChildScrollView(
-              padding: EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      height: 150.0,
-                      enableInfiniteScroll: false,
-                      padEnds: false,
-                      reverse: false,
-                      initialPage: 0,
-                      viewportFraction: 0.40,
-                      disableCenter: false,
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: const Text(
+                      'Naposledy objednané',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                    items: data.map((item) {
-                      return Card(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Theme.of(context).colorScheme.outline,
-                          ),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(12)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                      onTap: () => print('See all'),
+                      child: const Text(
+                        'VŠETKY',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w600,
                         ),
-                        clipBehavior: Clip.antiAlias,
-                        child: SizedBox(
-                          child: Center(
-                              child: Column(
-                            children: [
-                              Image.asset(item["url"], fit: BoxFit.cover),
-                              const SizedBox(
-                                height: 20.0,
-                              ),
-                              Text(item["title"]),
-                            ],
-                          )),
-                        ),
-                      );
-                    }).toList(),
+                      ),
+                    ),
                   ),
                 ],
               ),
-            )
-          ],
+              // carousel 1
+              DestinationCarousel(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: const Text(
+                      'Obľúbené u zákazníkov',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                      onTap: () => print('See all'),
+                      child: const Text(
+                        'VŠETKY',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              // carousel 2
+              HotelCarousel(),
+              SizedBox(height: 5.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: const Text(
+                      'Naposledy objednané',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                      onTap: () => print('See all'),
+                      child: const Text(
+                        'VŠETKY',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 0, 15.0, 15.0),
+                child: Card(
+                    elevation: 5.0,
+                    shadowColor: Color.fromRGBO(0, 0, 0, 0.5),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: Theme.of(context).colorScheme.outline,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(7)),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    child: Image.asset("lib/assets/banner.jpg",
+                        fit: BoxFit.cover)),
+              ),
+            ],
+          ),
         ),
       ),
       /*
@@ -155,16 +200,17 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.pin_drop_outlined),
       ),*/
       bottomNavigationBar: ConvexAppBar(
-        backgroundColor: Color.fromARGB(255, 0, 153, 255),
+        backgroundColor: Colors.blue,
         activeColor: Color.fromARGB(255, 255, 255, 255),
         color: Color.fromARGB(255, 255, 255, 255),
-        curveSize: 90,
+        curveSize: 70,
+        elevation: 0.0,
         style: TabStyle.react,
         items: [
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.pin_drop_outlined, title: 'Map'),
           TabItem(icon: Icons.add, title: 'Add'),
-          TabItem(icon: Icons.message, title: 'Message'),
+          TabItem(icon: Icons.qr_code, title: 'QR'),
           TabItem(icon: Icons.people, title: 'Profile'),
         ],
         initialActiveIndex: 0,

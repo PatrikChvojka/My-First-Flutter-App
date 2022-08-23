@@ -3,6 +3,7 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter_application_1/main.dart';
+import '../../presentation/pages/qr_code.dart';
 
 class GoogleMapScreen extends StatefulWidget {
   const GoogleMapScreen({Key? key}) : super(key: key);
@@ -106,6 +107,14 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
             builder: (context) => GoogleMapScreen(),
           ));
     }
+
+    if (i == 3) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Qrcode(),
+          ));
+    }
   }
 
   @override
@@ -125,7 +134,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
         onMapCreated: _onMapCreated,
       ),
       bottomNavigationBar: ConvexAppBar(
-        backgroundColor: Color.fromARGB(255, 0, 153, 255),
+        backgroundColor: Colors.blue,
         activeColor: Color.fromARGB(255, 255, 255, 255),
         color: Color.fromARGB(255, 255, 255, 255),
         curveSize: 90,
@@ -134,7 +143,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.pin_drop_outlined, title: 'Map'),
           TabItem(icon: Icons.add, title: 'Add'),
-          TabItem(icon: Icons.message, title: 'Message'),
+          TabItem(icon: Icons.qr_code, title: 'QR'),
           TabItem(icon: Icons.people, title: 'Profile'),
         ],
         initialActiveIndex: 1,
