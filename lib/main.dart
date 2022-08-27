@@ -63,10 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        elevation: 0.0,
-      ),
       body: Container(
         padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
         constraints: const BoxConstraints.expand(),
@@ -75,6 +71,19 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 85.0),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
+                child: Text(
+                  '''What would you
+like to find?''',
+                  style: TextStyle(
+                    fontSize: 23.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

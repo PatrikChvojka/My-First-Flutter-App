@@ -42,7 +42,7 @@ List<Activity> activities = [
     price: 30,
   ),
   Activity(
-    imageUrl: "lib/assets/food03.jpg",
+    imageUrl: "lib/assets/food02.jpg",
     name: 'Walking Tour and Gonadola Ride',
     type: 'Sightseeing Tour',
     startTimes: ['11:00 pm', '1:00 pm'],
@@ -50,7 +50,7 @@ List<Activity> activities = [
     price: 210,
   ),
   Activity(
-    imageUrl: "lib/assets/food03.jpg",
+    imageUrl: "lib/assets/food01.jpg",
     name: 'Murano and Burano Tour',
     type: 'Sightseeing Tour',
     startTimes: ['12:30 pm', '2:00 pm'],

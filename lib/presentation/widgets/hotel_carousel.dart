@@ -56,7 +56,7 @@ class _HotelCarouselState extends State<HotelCarousel> {
                           ),
                           SizedBox(height: 2.0),
                           Text(
-                            '\$${hotel.price} / night',
+                            '\$${hotel.price}',
                             style: TextStyle(
                               fontSize: 13.0,
                               fontWeight: FontWeight.w600,
