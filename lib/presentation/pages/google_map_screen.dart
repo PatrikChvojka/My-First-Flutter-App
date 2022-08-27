@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:flutter_application_1/main.dart';
+import '../../presentation/pages/home.dart';
 import '../../presentation/pages/qr_code.dart';
 
 class GoogleMapScreen extends StatefulWidget {

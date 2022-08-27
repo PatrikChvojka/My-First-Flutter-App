@@ -3,7 +3,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../presentation/pages/google_map_screen.dart';
-import 'package:flutter_application_1/main.dart';
+import '../../presentation/pages/home.dart';
 
 class Qrcode extends StatefulWidget {
   const Qrcode({Key? key}) : super(key: key);
