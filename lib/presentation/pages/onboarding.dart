@@ -3,6 +3,20 @@ import 'package:flutter_application_1/presentation/pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+class Wrapper extends StatelessWidget {
+  final bool showHome;
+  const Wrapper({Key? key, required this.showHome}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (showHome) {
+      return MyApp();
+    } else {
+      return Onboarding();
+    }
+  }
+}
+
 class Onboarding extends StatefulWidget {
   const Onboarding({Key? key}) : super(key: key);
 
