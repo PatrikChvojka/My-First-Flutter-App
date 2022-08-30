@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/pages/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Onboarding extends StatefulWidget {
@@ -65,9 +66,13 @@ class _OnboardingState extends State<Onboarding> {
           controller: controller,
           onPageChanged: (index) {
             if (index == 2) {
-              isLastPage = true;
+              setState(() {
+                isLastPage = true;
+              });
             } else {
-              isLastPage = false;
+              setState(() {
+                isLastPage = false;
+              });
             }
             print(isLastPage);
           },
@@ -110,6 +115,10 @@ class _OnboardingState extends State<Onboarding> {
                 style: TextStyle(fontSize: 24),
               ),
               onPressed: () async {
+                // navigate rirectly to home page
+                final prefs = await SharedPreferences.getInstance();
+                prefs.setBool('showHome', true);
+
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => MyApp()),
                 );
