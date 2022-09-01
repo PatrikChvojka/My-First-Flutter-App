@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Moja prvá aplikácia',
       theme: ThemeData(
-        fontFamily: 'Montserrat',
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Moja prvá aplikácia'),

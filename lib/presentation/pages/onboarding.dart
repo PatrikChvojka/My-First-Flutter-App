@@ -10,7 +10,8 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (showHome) {
-      return MyApp();
+      return Onboarding();
+      // return MyApp();
     } else {
       return Onboarding();
     }
@@ -50,13 +51,14 @@ class _OnboardingState extends State<Onboarding> {
               fit: BoxFit.cover,
               width: double.infinity,
             ),
-            const SizedBox(height: 64),
             Text(
               title,
+              textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.blue,
+                color: Color.fromRGBO(239, 189, 107, 1),
                 fontSize: 32,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w900,
+                fontStyle: FontStyle.italic,
               ),
             ),
             const SizedBox(height: 24),
@@ -64,7 +66,11 @@ class _OnboardingState extends State<Onboarding> {
               padding: const EdgeInsets.symmetric(horizontal: 70.0),
               child: Text(
                 subtitle,
-                style: const TextStyle(color: Colors.black),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Color.fromRGBO(208, 160, 81, 1)),
               ),
             ),
           ],
@@ -92,23 +98,26 @@ class _OnboardingState extends State<Onboarding> {
           },
           children: [
             buildPage(
-              color: Colors.white,
-              urlImage: 'lib/assets/illustration02.png',
-              title: 'LOREM IPSUM 1',
+              color: Color.fromRGBO(255, 238, 233, 1),
+              urlImage: 'lib/assets/onboarding01.png',
+              title: '''Nájdi svoju
+reštauráciu''',
               subtitle:
                   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
             ),
             buildPage(
-              color: Colors.white,
-              urlImage: 'lib/assets/illustration02.png',
-              title: 'LOREM IPSUM 2',
+              color: Color.fromRGBO(255, 238, 233, 1),
+              urlImage: 'lib/assets/onboarding02.png',
+              title: '''Vyber jedlo ktoré
+ miluješ''',
               subtitle:
                   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
             ),
             buildPage(
-              color: Colors.white,
-              urlImage: 'lib/assets/illustration02.png',
-              title: 'LOREM IPSUM 3',
+              color: Color.fromRGBO(255, 238, 233, 1),
+              urlImage: 'lib/assets/onboarding03.png',
+              title: '''Objednaj a my ti to
+doručíme až domov''',
               subtitle:
                   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
             ),
@@ -118,15 +127,16 @@ class _OnboardingState extends State<Onboarding> {
       bottomSheet: isLastPage
           ? TextButton(
               style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
                   primary: Colors.white,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color.fromRGBO(239, 189, 107, 1),
                   minimumSize: const Size.fromHeight(80)),
               child: const Text(
-                'Get Started',
-                style: TextStyle(fontSize: 24),
+                'Poďme na to!',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w800,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
               onPressed: () async {
                 // navigate rirectly to home page
@@ -139,7 +149,7 @@ class _OnboardingState extends State<Onboarding> {
               },
             )
           : Container(
-              color: Colors.white,
+              color: Color.fromRGBO(255, 238, 233, 1),
               padding:
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
               height: 80.0,
@@ -148,6 +158,9 @@ class _OnboardingState extends State<Onboarding> {
                 children: [
                   TextButton(
                     child: const Text('SKIP'),
+                    style: TextButton.styleFrom(
+                      primary: Color.fromRGBO(239, 189, 107, 1),
+                    ),
                     onPressed: () => controller.jumpToPage(2),
                   ),
                   Center(
@@ -156,8 +169,8 @@ class _OnboardingState extends State<Onboarding> {
                       count: 3,
                       effect: WormEffect(
                         spacing: 16,
-                        dotColor: Colors.black26,
-                        activeDotColor: Colors.blue,
+                        dotColor: Colors.white,
+                        activeDotColor: Color.fromRGBO(239, 189, 107, 1),
                       ),
                       onDotClicked: (index) => controller.animateToPage(index,
                           duration: const Duration(milliseconds: 500),
@@ -166,6 +179,9 @@ class _OnboardingState extends State<Onboarding> {
                   ),
                   TextButton(
                     child: const Text('NEXT'),
+                    style: TextButton.styleFrom(
+                      primary: Color.fromRGBO(239, 189, 107, 1),
+                    ),
                     onPressed: () => controller.nextPage(
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeInOut,

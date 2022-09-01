@@ -9,6 +9,10 @@ void main() async {
 
   runApp(
     MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Raleway', // main font
+        primarySwatch: Colors.blue,
+      ),
       home: Wrapper(showHome: showHome),
     ),
   );

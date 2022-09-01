@@ -98,6 +98,26 @@ flutter:
         weight: 600
       - asset: lib/assets/fonts/Montserrat/Montserrat-ExtraBold.ttf
         weight: 800
+   - family: Raleway
+     fonts:
+      - asset: lib/assets/fonts/raleway/Raleway-Thin.ttf
+        weight: 100
+      - asset: lib/assets/fonts/raleway/Raleway-ExtraLight.ttf
+        weight: 200
+      - asset: lib/assets/fonts/raleway/Raleway-Light.ttf
+        weight: 300
+      - asset: lib/assets/fonts/raleway/Raleway-Regular.ttf
+        weight: 400
+      - asset: lib/assets/fonts/raleway/Raleway-Medium.ttf
+        weight: 500
+      - asset: lib/assets/fonts/raleway/Raleway-SemiBold.ttf
+        weight: 600
+      - asset: lib/assets/fonts/raleway/Raleway-Bold.ttf
+        weight: 700
+      - asset: lib/assets/fonts/raleway/Raleway-ExtraBold.ttf
+        weight: 800
+      - asset: lib/assets/fonts/raleway/Raleway-Black.ttf
+        weight: 900
 
   # To add assets to your application, add an assets section, like this:
   # assets:
