@@ -26,6 +26,14 @@ class _FoodCarouselVertical extends State<FoodCarouselVertical> {
             decoration: new BoxDecoration(
               borderRadius: new BorderRadius.circular(10.0),
               color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Color.fromRGBO(196, 148, 70, 0.1),
+                  spreadRadius: 0,
+                  blurRadius: 6,
+                  offset: Offset(-3, 2), // changes position of shadow
+                ),
+              ],
             ),
             child: Column(
               children: [
@@ -75,7 +83,7 @@ class _FoodCarouselVertical extends State<FoodCarouselVertical> {
                                 backgroundColor: style.MainAppStyle().buttonBG,
                               ),
                               child: Icon(
-                                size: 15.0,
+                                size: 18.0,
                                 Icons.shopping_bag_outlined,
                                 color: style.MainAppStyle().secondColor,
                               ),

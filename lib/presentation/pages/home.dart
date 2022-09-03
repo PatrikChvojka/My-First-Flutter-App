@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/widgets/bottomMenu.dart';
-import 'package:flutter_application_1/presentation/widgets/destination_carousel.dart';
 import 'package:flutter_application_1/presentation/widgets/banner_carousel.dart';
 // style
 import 'package:flutter_application_1/presentation/style/style.dart' as style;
 import 'package:flutter_application_1/presentation/widgets/food_carousel_vertical.dart';
+import 'package:flutter_application_1/presentation/widgets/menu.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -32,7 +32,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appbar
+      appBar: MainMenu(),
       backgroundColor: style.MainAppStyle().bodyBG,
+      // body
       body: Container(
         padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
         constraints: const BoxConstraints.expand(),
@@ -40,7 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 85.0),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
@@ -85,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(.0, 15.0, 20.0, 10.0),
+                    padding: const EdgeInsets.fromLTRB(0.0, 10.0, 20.0, 10.0),
                     child: TextButton(
                       onPressed: () {},
                       style: TextButton.styleFrom(

@@ -27,6 +27,14 @@ class _BannerCarouselState extends State<BannerCarousel> {
             decoration: new BoxDecoration(
               borderRadius: new BorderRadius.circular(10.0),
               color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Color.fromRGBO(196, 148, 70, 0.1),
+                  spreadRadius: 0,
+                  blurRadius: 6,
+                  offset: Offset(-3, 2), // changes position of shadow
+                ),
+              ],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +42,7 @@ class _BannerCarouselState extends State<BannerCarousel> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Image(
-                    height: 130.0,
+                    height: 120.0,
                     width: 240.0,
                     image: AssetImage(banner.imageUrl),
                     fit: BoxFit.cover,
