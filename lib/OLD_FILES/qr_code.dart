@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -80,3 +80,4 @@ class _QrcodeState extends State<Qrcode> {
     );
   }
 }
+*/

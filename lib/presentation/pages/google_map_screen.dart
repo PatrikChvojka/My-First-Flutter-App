@@ -3,7 +3,6 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import '../../presentation/pages/home.dart';
-import '../../presentation/pages/qr_code.dart';
 
 class GoogleMapScreen extends StatefulWidget {
   const GoogleMapScreen({Key? key}) : super(key: key);
@@ -105,14 +104,6 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
           context,
           MaterialPageRoute(
             builder: (context) => GoogleMapScreen(),
-          ));
-    }
-
-    if (i == 3) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Qrcode(),
           ));
     }
   }

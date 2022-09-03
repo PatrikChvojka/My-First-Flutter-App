@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentation/pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+// pages
+import 'package:flutter_application_1/presentation/pages/home.dart';
+// style
+import 'package:flutter_application_1/presentation/style/style.dart' as style;
 
 class Wrapper extends StatelessWidget {
   final bool showHome;
@@ -10,8 +13,7 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (showHome) {
-      return Onboarding();
-      // return MyApp();
+      return MyApp();
     } else {
       return Onboarding();
     }
@@ -55,7 +57,7 @@ class _OnboardingState extends State<Onboarding> {
               title,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color.fromRGBO(239, 189, 107, 1),
+                color: style.MainAppStyle().mainColor,
                 fontSize: 32,
                 fontWeight: FontWeight.w900,
                 fontStyle: FontStyle.italic,

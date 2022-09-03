@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentation/pages/onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// style
+import 'package:flutter_application_1/presentation/style/style.dart' as style;
+// pages
+import 'package:flutter_application_1/presentation/pages/onboarding.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,10 +12,7 @@ void main() async {
 
   runApp(
     MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Raleway', // main font
-        primarySwatch: Colors.blue,
-      ),
+      theme: style.MainAppStyle().themeData,
       home: Wrapper(showHome: showHome),
     ),
   );

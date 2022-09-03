@@ -1,9 +1,10 @@
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentation/pages/google_map_screen.dart';
-import 'package:flutter_application_1/presentation/pages/qr_code.dart';
+import 'package:flutter_application_1/presentation/widgets/bottomMenu.dart';
 import 'package:flutter_application_1/presentation/widgets/destination_carousel.dart';
-import 'package:flutter_application_1/presentation/widgets/hotel_carousel.dart';
+import 'package:flutter_application_1/presentation/widgets/banner_carousel.dart';
+// style
+import 'package:flutter_application_1/presentation/style/style.dart' as style;
+import 'package:flutter_application_1/presentation/widgets/food_carousel_vertical.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -12,9 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Moja prvá aplikácia',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: style.MainAppStyle().themeData,
       home: const MyHomePage(title: 'Moja prvá aplikácia'),
     );
   }
@@ -30,33 +29,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  onTapFunction(i) {
-    if (i == 0) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MyApp(),
-          ));
-    }
-    if (i == 1) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => GoogleMapScreen(),
-          ));
-    }
-    if (i == 3) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Qrcode(),
-          ));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: style.MainAppStyle().bodyBG,
       body: Container(
         padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
         constraints: const BoxConstraints.expand(),
@@ -69,109 +45,101 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
                 child: Text(
-                  '''What would you
-like to find?''',
+                  '''Na čo máte dnes chuť''',
                   style: TextStyle(
-                    fontSize: 23.0,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 26.0,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
+                child: Text(
+                  'Patrik?',
+                  style: TextStyle(
+                    fontSize: 26.0,
+                    color: style.MainAppStyle().mainColor,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.0),
+              // banners
+              BannerCarousel(),
+              // banners
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: const Text(
-                      'Naposledy objednané',
+                      'Začnite pridaním prvého jedla',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w700,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: GestureDetector(
-                      onTap: () => print('See all'),
-                      child: const Text(
-                        'VŠETKY',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w600,
+                    padding: const EdgeInsets.fromLTRB(.0, 15.0, 20.0, 10.0),
+                    child: TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        primary: Colors.white,
+                        backgroundColor: style.MainAppStyle().mainColor,
+                        padding: const EdgeInsets.all(5.0),
+                        textStyle: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
+                      child: Text('VIAC'),
                     ),
                   ),
                 ],
               ),
+              // food vertical
+              FoodCarouselVertical(),
+
               // carousel 1
-              DestinationCarousel(),
-              Row(
+              //DestinationCarousel(),
+              /*Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: const Text(
-                      'Obľúbené u zákazníkov',
+                      'Naša ponuka',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w700,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: GestureDetector(
-                      onTap: () => print('See all'),
-                      child: const Text(
-                        'VŠETKY',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w600,
+                    child: TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        primary: Colors.white,
+                        backgroundColor: style.MainAppStyle().mainColor,
+                        padding: const EdgeInsets.all(5.0),
+                        textStyle: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
+                      child: Text('VIAC'),
                     ),
                   ),
                 ],
               ),
-              // carousel 2
-              HotelCarousel(),
               SizedBox(height: 5.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: const Text(
-                      'Naposledy objednané',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: GestureDetector(
-                      onTap: () => print('See all'),
-                      child: const Text(
-                        'VŠETKY',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(15.0, 0, 15.0, 15.0),
                 child: Card(
@@ -186,38 +154,13 @@ like to find?''',
                     clipBehavior: Clip.antiAlias,
                     child: Image.asset("lib/assets/banner.jpg",
                         fit: BoxFit.cover)),
-              ),
+              ),*/
             ],
           ),
         ),
       ),
-      /*
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => GoogleMapScreen(),
-            )),
-        tooltip: 'Google Map',
-        child: Icon(Icons.pin_drop_outlined),
-      ),*/
-      bottomNavigationBar: ConvexAppBar(
-        backgroundColor: Colors.blue,
-        activeColor: Color.fromARGB(255, 255, 255, 255),
-        color: Color.fromARGB(255, 255, 255, 255),
-        curveSize: 70,
-        elevation: 0.0,
-        style: TabStyle.react,
-        items: [
-          TabItem(icon: Icons.home, title: 'Home'),
-          TabItem(icon: Icons.pin_drop_outlined, title: 'Map'),
-          TabItem(icon: Icons.add, title: 'Add'),
-          TabItem(icon: Icons.qr_code, title: 'QR'),
-          TabItem(icon: Icons.people, title: 'Profile'),
-        ],
-        initialActiveIndex: 0,
-        onTap: (int i) => onTapFunction(i),
-      ),
+      /* BOTTOM MENU */
+      bottomNavigationBar: bottomMenu(),
     );
   }
 }
