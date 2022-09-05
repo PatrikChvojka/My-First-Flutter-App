@@ -6,6 +6,7 @@ import 'package:flutter_application_1/presentation/style/style.dart' as style;
 import 'package:flutter_application_1/presentation/pages/onboarding.dart';
 
 void main() async {
+  // show onboarding screen only once
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   final showHome = prefs.getBool('showHome') ?? false;

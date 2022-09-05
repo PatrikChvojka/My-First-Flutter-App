@@ -1,3 +1,21 @@
+import 'dart:async' show Future;
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
+
+Future<List<FrontBanner>> fetchAlbum(http.Client client) async {
+  final response = await client.get(
+      Uri.parse('https://progresivneaplikacie.sk/project/flutter/banner.json'));
+
+  return compute(parsePhotos, response.body);
+}
+
+// A function that converts a response body into a List<Photo>.
+List<FrontBanner> parsePhotos(String responseBody) {
+  final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
+  return parsed.map<FrontBanner>((json) => FrontBanner.fromJson(json)).toList();
+}
+
 class FrontBanner {
   String imageUrl;
   String name;
@@ -8,22 +26,12 @@ class FrontBanner {
     required this.name,
     required this.description,
   });
-}
 
-final List<FrontBanner> banners = [
-  FrontBanner(
-    imageUrl: "lib/assets/banner.png",
-    name: 'Víkendová zľava na naše burgre',
-    description: '20% na prvú objednávku',
-  ),
-  FrontBanner(
-    imageUrl: "lib/assets/banner.png",
-    name: 'Víkendová zľava na naše burgre',
-    description: '20% na prvú objednávku',
-  ),
-  FrontBanner(
-    imageUrl: "lib/assets/banner.png",
-    name: 'Víkendová zľava na naše burgre',
-    description: '20% na prvú objednávku',
-  ),
-];
+  factory FrontBanner.fromJson(Map<String, dynamic> json) {
+    return FrontBanner(
+      imageUrl: json['image'] as String,
+      name: json['title'] as String,
+      description: json['Description'] as String,
+    );
+  }
+}
