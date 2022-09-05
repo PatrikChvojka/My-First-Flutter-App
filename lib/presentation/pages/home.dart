@@ -106,57 +106,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               // food vertical
               FoodCarouselVertical(),
-
-              // carousel 1
-              //DestinationCarousel(),
-              /*Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: const Text(
-                      'Naša ponuka',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: TextButton(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(
-                        primary: Colors.white,
-                        backgroundColor: style.MainAppStyle().mainColor,
-                        padding: const EdgeInsets.all(5.0),
-                        textStyle: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      child: Text('VIAC'),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 5.0),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15.0, 0, 15.0, 15.0),
-                child: Card(
-                    elevation: 5.0,
-                    shadowColor: Color.fromRGBO(0, 0, 0, 0.5),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: Theme.of(context).colorScheme.outline,
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(7)),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    child: Image.asset("lib/assets/banner.jpg",
-                        fit: BoxFit.cover)),
-              ),*/
             ],
           ),
         ),

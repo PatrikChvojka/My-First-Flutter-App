@@ -60,7 +60,7 @@ class FoodList extends StatelessWidget {
           ),
           child: Container(
             margin: EdgeInsets.all(5),
-            width: 110.0,
+            width: 120.0,
             decoration: new BoxDecoration(
               borderRadius: new BorderRadius.circular(10.0),
               color: Colors.white,
@@ -94,44 +94,42 @@ class FoodList extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
-                        height: 40.0,
+                        height: 45.0,
                         child: Text(
                           food.name,
                           textAlign: TextAlign.center,
                           maxLines: 3,
                           style: TextStyle(
-                            fontSize: 12.0,
+                            fontSize: 13.0,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
-                      SizedBox(height: 10.0),
+                      SizedBox(height: 5.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             food.price + "€",
                             style: TextStyle(
-                              fontSize: 14.0,
+                              fontSize: 13.0,
                               color: style.MainAppStyle().secondColor,
                               fontWeight: FontWeight.w800,
                             ),
                           ),
-                          SizedBox(width: 20.0),
-                          Expanded(
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                backgroundColor: style.MainAppStyle().buttonBG,
-                              ),
-                              child: Icon(
-                                size: 18.0,
-                                Icons.shopping_bag_outlined,
-                                color: style.MainAppStyle().secondColor,
-                              ),
-                              onPressed: () {},
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              backgroundColor: style.MainAppStyle().buttonBG,
+                              maximumSize: Size(35.0, 35.0),
+                              minimumSize: Size(35.0, 35.0),
                             ),
+                            child: Icon(
+                              size: 18.0,
+                              Icons.shopping_bag_outlined,
+                              color: style.MainAppStyle().secondColor,
+                            ),
+                            onPressed: () {},
                           ),
-                          SizedBox(width: 5.0),
                         ],
                       ),
                     ],

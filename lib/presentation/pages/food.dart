@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentation/widgets/bottomMenu.dart';
-import 'package:flutter_application_1/presentation/widgets/menu.dart';
 import '../../data/models/food_model.dart';
+// style
+import 'package:flutter_application_1/presentation/style/style.dart' as style;
 
 class FoodScreen extends StatefulWidget {
   final Food food;
@@ -16,38 +16,156 @@ class _FoodScreenState extends State<FoodScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainMenu(),
+      backgroundColor: style.MainAppStyle().bodyBG,
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 280.0,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  offset: Offset(0.0, 2.0),
+          // head
+          Stack(
+            children: [
+              Container(
+                height: 280.0,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black26,
+                      offset: Offset(0.0, 2.0),
+                    ),
+                  ],
+                ),
+                child: Hero(
+                  tag: widget.food.imageUrl,
+                  child: ClipRRect(
+                    child: Image.network(
+                      height: 140.0,
+                      width: 140.0,
+                      widget.food.imageUrl,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 10.0, vertical: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: style.MainAppStyle().buttonBG,
+                        maximumSize: Size(50.0, 50.0),
+                        minimumSize: Size(50.0, 50.0),
+                      ),
+                      child: Icon(
+                        size: 23.0,
+                        Icons.arrow_back,
+                        color: style.MainAppStyle().secondColor,
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    Row(
+                      children: [
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: style.MainAppStyle().buttonBG,
+                            maximumSize: Size(50.0, 50.0),
+                            minimumSize: Size(50.0, 50.0),
+                          ),
+                          child: Icon(
+                            size: 23.0,
+                            Icons.shopping_bag_outlined,
+                            color: style.MainAppStyle().secondColor,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 10.0),
+
+          // body
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.food.name,
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(height: 15.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.food.price + "€",
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        color: style.MainAppStyle().mainColor,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            shape: CircleBorder(),
+                            backgroundColor: style.MainAppStyle().buttonBG,
+                            maximumSize: Size(50.0, 50.0),
+                            minimumSize: Size(50.0, 50.0),
+                          ),
+                          child: Icon(
+                            size: 30.0,
+                            Icons.expand_more_rounded,
+                            color: style.MainAppStyle().secondColor,
+                          ),
+                          onPressed: () {},
+                        ),
+                        SizedBox(width: 10.0),
+                        Text(
+                          "02",
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(width: 10.0),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            shape: CircleBorder(),
+                            backgroundColor: style.MainAppStyle().mainColor,
+                            maximumSize: Size(50.0, 50.0),
+                            minimumSize: Size(50.0, 50.0),
+                          ),
+                          child: Icon(
+                            size: 30.0,
+                            Icons.expand_less_rounded,
+                            color: style.MainAppStyle().buttonBG,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),
-            child: Hero(
-              tag: widget.food.imageUrl,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(30.0),
-                child: Image.network(
-                  height: 140.0,
-                  width: 140.0,
-                  widget.food.imageUrl,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
           ),
-          Text(widget.food.name),
         ],
       ),
-      bottomNavigationBar: bottomMenu(),
     );
   }
 }
