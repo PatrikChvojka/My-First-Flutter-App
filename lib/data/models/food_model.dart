@@ -1,8 +1,25 @@
+import 'dart:async' show Future;
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
+
+Future<List<Food>> fetchFoods(http.Client client) async {
+  final response = await client.get(
+      Uri.parse('https://progresivneaplikacie.sk/project/flutter/food.json'));
+
+  return compute(parseFood, response.body);
+}
+
+List<Food> parseFood(String responseBody) {
+  final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
+  return parsed.map<Food>((json) => Food.fromJson(json)).toList();
+}
+
 class Food {
   String imageUrl;
   String name;
   String description;
-  double price;
+  String price;
 
   Food({
     required this.imageUrl,
@@ -10,42 +27,13 @@ class Food {
     required this.description,
     required this.price,
   });
-}
 
-final List<Food> foods = [
-  Food(
-    imageUrl: "lib/assets/burger.jpg",
-    name: 'Alcatraz burger premium',
-    description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    price: 9.90,
-  ),
-  Food(
-    imageUrl: "lib/assets/burger.jpg",
-    name: 'Alcatraz burger premium s pridanou cibuľkou',
-    description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    price: 9.90,
-  ),
-  Food(
-    imageUrl: "lib/assets/burger.jpg",
-    name: 'Alcatraz burger premium',
-    description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    price: 9.90,
-  ),
-  Food(
-    imageUrl: "lib/assets/burger.jpg",
-    name: 'Alcatraz burger premium s pridanou cibuľkou',
-    description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    price: 9.90,
-  ),
-  Food(
-    imageUrl: "lib/assets/burger.jpg",
-    name: 'Alcatraz burger premium',
-    description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    price: 9.90,
-  ),
-];
+  factory Food.fromJson(Map<String, dynamic> json) {
+    return Food(
+      imageUrl: json['image'] as String,
+      name: json['title'] as String,
+      description: json['desc'] as String,
+      price: json['price'] as String,
+    );
+  }
+}
