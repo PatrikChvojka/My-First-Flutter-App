@@ -5,6 +5,7 @@ import 'package:flutter_application_1/presentation/style/style.dart' as style;
 // pages
 import 'package:flutter_application_1/presentation/pages/google_map_screen.dart';
 import 'package:flutter_application_1/presentation/pages/home.dart';
+import 'package:flutter_application_1/presentation/pages/uploadImage.dart';
 
 class bottomMenu extends StatelessWidget {
   const bottomMenu({Key? key}) : super(key: key);
@@ -24,6 +25,13 @@ class bottomMenu extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => GoogleMapScreen(),
+            ));
+      }
+      if (i == 2) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => UploadImage(),
             ));
       }
     }

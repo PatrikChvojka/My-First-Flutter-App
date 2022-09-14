@@ -135,7 +135,7 @@ class _FoodScreenState extends State<FoodScreen> {
                         ),
                         SizedBox(width: 10.0),
                         Text(
-                          "02",
+                          "01",
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.black,
@@ -161,11 +161,78 @@ class _FoodScreenState extends State<FoodScreen> {
                     ),
                   ],
                 ),
+                SizedBox(height: 20.0),
+                Text(
+                  widget.food.description,
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    height: 2,
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ],
             ),
           ),
         ],
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 20.0),
+        child: FloatingActionButton.extended(
+          elevation: 0.0,
+          icon: const Icon(Icons.shopping_bag_outlined),
+          backgroundColor: style.MainAppStyle().mainColor,
+          label: const Text(
+            'PRIDAŤ DO KOŠÍKA',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+          onPressed: () {},
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
+      /* Padding(
+          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 45.0),
+          child: Container(
+            width: 100.0,
+            decoration: BoxDecoration(
+              color: style.MainAppStyle().mainColor,
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      shape: CircleBorder(),
+                      backgroundColor: style.MainAppStyle().buttonBG,
+                      maximumSize: Size(50.0, 50.0),
+                      minimumSize: Size(50.0, 50.0),
+                    ),
+                    child: Icon(
+                      size: 30.0,
+                      Icons.shopping_bag_outlined,
+                      color: style.MainAppStyle().mainColor,
+                    ),
+                    onPressed: () {},
+                  ),
+                  Text(
+                    'PRIDAŤ DO KOŠÍKA',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),*/
     );
   }
 }
