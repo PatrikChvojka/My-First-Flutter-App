@@ -13,6 +13,22 @@ class FoodScreen extends StatefulWidget {
 }
 
 class _FoodScreenState extends State<FoodScreen> {
+  // add to cart counter
+  int counterFood = 1;
+
+  // changeCounter
+  changeCounter(int type) {
+    if (type == 1) {
+      // plus
+    } else {
+      // minus
+
+    }
+  }
+
+  // add to cart
+  addTocart() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,6 +135,8 @@ class _FoodScreenState extends State<FoodScreen> {
                     ),
                     Row(
                       children: [
+                        //
+                        // minus button
                         TextButton(
                           style: TextButton.styleFrom(
                             shape: CircleBorder(),
@@ -131,11 +149,13 @@ class _FoodScreenState extends State<FoodScreen> {
                             Icons.expand_more_rounded,
                             color: style.MainAppStyle().secondColor,
                           ),
-                          onPressed: () {},
+                          onPressed: changeCounter(0),
                         ),
                         SizedBox(width: 10.0),
+                        //
+                        // counter
                         Text(
-                          "01",
+                          counterFood.toString(),
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.black,
@@ -143,6 +163,8 @@ class _FoodScreenState extends State<FoodScreen> {
                           ),
                         ),
                         SizedBox(width: 10.0),
+                        //
+                        // plus button
                         TextButton(
                           style: TextButton.styleFrom(
                             shape: CircleBorder(),
@@ -155,7 +177,7 @@ class _FoodScreenState extends State<FoodScreen> {
                             Icons.expand_less_rounded,
                             color: style.MainAppStyle().buttonBG,
                           ),
-                          onPressed: () {},
+                          onPressed: changeCounter(1),
                         ),
                       ],
                     ),
@@ -189,7 +211,7 @@ class _FoodScreenState extends State<FoodScreen> {
               fontWeight: FontWeight.w800,
             ),
           ),
-          onPressed: () {},
+          onPressed: addTocart(),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

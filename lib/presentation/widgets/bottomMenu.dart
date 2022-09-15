@@ -27,13 +27,13 @@ class bottomMenu extends StatelessWidget {
               builder: (context) => GoogleMapScreen(),
             ));
       }
-      if (i == 2) {
+      /* if (i == 2) {
         Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => UploadImage(),
             ));
-      }
+      }*/
     }
 
     return ConvexAppBar(
