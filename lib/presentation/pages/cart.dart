@@ -90,9 +90,20 @@ class _MyCartState extends State<MyCart> {
                   ),
                   // body
                   child: Card(
-                    child: ListTile(
-                      title: Text(item.name),
-                      subtitle: Text(item.description + "\n" + item.price),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.network(
+                          height: 70.0,
+                          width: 70.0,
+                          item.imageUrl,
+                          fit: BoxFit.cover,
+                        ),
+                        ListTile(
+                          title: Text(item.name),
+                          subtitle: Text(item.description + "\n" + item.price),
+                        )
+                      ],
                     ),
                   ),
                 );
