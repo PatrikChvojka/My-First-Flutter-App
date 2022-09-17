@@ -53,7 +53,7 @@ dependencies:
   pay: ^1.0.10
   smooth_page_indicator: ^1.0.0+2
   shared_preferences: ^2.0.15
-
+  flutter_slidable: ^2.0.0
   badges: ^2.0.3
 
   # The following adds the Cupertino Icons font to your application.
