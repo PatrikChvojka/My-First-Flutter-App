@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
+import 'package:flutter_application_1/presentation/pages/cart.dart';
 // style
 import 'package:flutter_application_1/presentation/style/style.dart' as style;
 
@@ -49,8 +50,15 @@ class MainMenu extends StatelessWidget implements PreferredSizeWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            child:
-                IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {}),
+            child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MyCart(),
+                      ));
+                }),
           ),
         )
       ],

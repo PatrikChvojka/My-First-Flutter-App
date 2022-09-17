@@ -37,3 +37,20 @@ class Food {
     );
   }
 }
+
+// cart
+class MyCartClass {
+  String imageUrl;
+  String name;
+  String description;
+  String price;
+  String id;
+
+  MyCartClass({
+    required this.imageUrl,
+    required this.name,
+    required this.description,
+    required this.price,
+    required this.id,
+  });
+}

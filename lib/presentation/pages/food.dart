@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presentation/pages/cart.dart';
 import '../../data/models/food_model.dart';
 // style
 import 'package:flutter_application_1/presentation/style/style.dart' as style;
@@ -18,11 +19,19 @@ class _FoodScreenState extends State<FoodScreen> {
 
   // changeCounter
   changeCounter(int type) {
+    print(type);
     if (type == 1) {
       // plus
+      setState(() {
+        counterFood++;
+      });
     } else {
       // minus
-
+      if (counterFood > 1) {
+        setState(() {
+          counterFood--;
+        });
+      }
     }
   }
 
@@ -69,6 +78,7 @@ class _FoodScreenState extends State<FoodScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // back
                     TextButton(
                       style: TextButton.styleFrom(
                         backgroundColor: style.MainAppStyle().buttonBG,
@@ -84,6 +94,7 @@ class _FoodScreenState extends State<FoodScreen> {
                     ),
                     Row(
                       children: [
+                        // cart
                         TextButton(
                           style: TextButton.styleFrom(
                             backgroundColor: style.MainAppStyle().buttonBG,
@@ -95,7 +106,13 @@ class _FoodScreenState extends State<FoodScreen> {
                             Icons.shopping_bag_outlined,
                             color: style.MainAppStyle().secondColor,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MyCart(),
+                                ));
+                          },
                         ),
                       ],
                     ),
@@ -149,7 +166,9 @@ class _FoodScreenState extends State<FoodScreen> {
                             Icons.expand_more_rounded,
                             color: style.MainAppStyle().secondColor,
                           ),
-                          onPressed: changeCounter(0),
+                          onPressed: () {
+                            changeCounter(0);
+                          },
                         ),
                         SizedBox(width: 10.0),
                         //
@@ -177,7 +196,9 @@ class _FoodScreenState extends State<FoodScreen> {
                             Icons.expand_less_rounded,
                             color: style.MainAppStyle().buttonBG,
                           ),
-                          onPressed: changeCounter(1),
+                          onPressed: () {
+                            changeCounter(1);
+                          },
                         ),
                       ],
                     ),
@@ -211,50 +232,12 @@ class _FoodScreenState extends State<FoodScreen> {
               fontWeight: FontWeight.w800,
             ),
           ),
-          onPressed: addTocart(),
+          onPressed: () {
+            addTocart();
+          },
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-
-      /* Padding(
-          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 45.0),
-          child: Container(
-            width: 100.0,
-            decoration: BoxDecoration(
-              color: style.MainAppStyle().mainColor,
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      shape: CircleBorder(),
-                      backgroundColor: style.MainAppStyle().buttonBG,
-                      maximumSize: Size(50.0, 50.0),
-                      minimumSize: Size(50.0, 50.0),
-                    ),
-                    child: Icon(
-                      size: 30.0,
-                      Icons.shopping_bag_outlined,
-                      color: style.MainAppStyle().mainColor,
-                    ),
-                    onPressed: () {},
-                  ),
-                  Text(
-                    'PRIDAŤ DO KOŠÍKA',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),*/
     );
   }
 }
