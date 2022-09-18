@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter_application_1/presentation/pages/cart.dart';
+import 'package:flutter_application_1/data/models/food_model.dart';
 // style
 import 'package:flutter_application_1/presentation/style/style.dart' as style;
 
@@ -43,7 +44,7 @@ class MainMenu extends StatelessWidget implements PreferredSizeWidget {
             animationDuration: Duration(milliseconds: 300),
             animationType: BadgeAnimationType.slide,
             badgeContent: Text(
-              "10",
+              myOwnCart!.length.toString(),
               style: TextStyle(
                 color: style.MainAppStyle().mainColor,
                 fontSize: 11.0,

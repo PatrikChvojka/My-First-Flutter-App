@@ -20,12 +20,14 @@ class Food {
   String name;
   String description;
   String price;
+  String id;
 
   Food({
     required this.imageUrl,
     required this.name,
     required this.description,
     required this.price,
+    required this.id,
   });
 
   factory Food.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class Food {
       name: json['title'] as String,
       description: json['desc'] as String,
       price: json['price'] as String,
+      id: json['id'] as String,
     );
   }
 }
@@ -42,15 +45,31 @@ class Food {
 class MyCartClass {
   String imageUrl;
   String name;
-  String description;
+  String count;
   String price;
   String id;
 
   MyCartClass({
     required this.imageUrl,
     required this.name,
-    required this.description,
+    required this.count,
     required this.price,
     required this.id,
+  });
+}
+
+// cart list
+List<MyCartClass>? myOwnCart = [];
+
+// add to cart
+addToCart(imageUrl, name, count, price, id) {
+  myOwnCart?.add(MyCartClass(
+      imageUrl: imageUrl, name: name, count: count, price: price, id: id));
+}
+
+// remove from cart
+removeFromCart(id) {
+  myOwnCart?.removeWhere((element) {
+    return element.id == id;
   });
 }

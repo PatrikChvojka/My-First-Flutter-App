@@ -35,9 +35,6 @@ class _FoodScreenState extends State<FoodScreen> {
     }
   }
 
-  // add to cart
-  addTocart() {}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -233,7 +230,8 @@ class _FoodScreenState extends State<FoodScreen> {
             ),
           ),
           onPressed: () {
-            addTocart();
+            addToCart(widget.food.imageUrl, widget.food.name,
+                counterFood.toString(), widget.food.price, widget.food.id);
           },
         ),
       ),
